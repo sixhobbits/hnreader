@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <style>
+        body{max-width:650px;margin:40px auto;padding:0 10px;font:18px/1.5 -apple-system,BlinkMacSystemFont,"avenir next",avenir,"Segoe UI","lucida grande","helvetica neue",helvetica,"Fira Sans",roboto,noto,"Droid Sans",cantarell,oxygen,ubuntu,"franklin gothic medium","century gothic","Liberation Sans",sans-serif;color:#444}h1,h2,h3{line-height:1.2}
+    .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+        </style>
+    </head>
+    <body>
+        <div class="sidenav">
+            {% for article in articles %}
+            <a href="#article{{loop.index}}">{{article.title}}</a>
+            {% endfor %}
+        </div>
+        {% for article in articles %}
+        <a name="article{{loop.index}}"></a>
+        <h1>{{article.title}}</h1>
+          {% for paragraph in article.paragraphs %}
+              <p>{{paragraph}}</p>
+
+          {% endfor %}
+        <hr />
+        {% endfor %}
+    </body>
+</html>
